@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useCallback } from "react";
-import { useLocation } from "wouter";
-import { useGifs } from "components/hooks/useGifs";
-import TrendingSearches from "components/TrendingSearches";
-import ListOfGifs from "components/ListOfGifs";
-import SearchForm from "components/SearchForm";
-import { Helmet } from "react-helmet";
+import { useLocation } from "wouter"
+import ListOfGifs from 'components/ListOfGifs'
+import { useGifs } from "components/hooks/useGifs"
+import TrendingSearches from 'components/TrendingSearches'
+import SearchForm from 'components/SearchForm'
+
 
 export default function Home() {
   const [path, pushLocation] = useLocation();
@@ -21,19 +21,20 @@ export default function Home() {
 
   return (
     <>
-      <Helmet>
-        <title>Home | Giffy</title>
-      </Helmet>
-      <SearchForm onSubmit={handleSubmit} />
-      <div className="App-main">
-        <div className="App-results">
-          <h3 className="App-title">Última búsqueda</h3>
-          <ListOfGifs gifs={gifs} />
-        </div>
-        <div className="App-category">
-          <TrendingSearches />
+      <header className="o-header">
+        <SearchForm onSubmit={handleSubmit} />
+      </header>
+      <div className="App-wrapper">
+        <div className="App-main">
+          <div className="App-results">
+            <h3 className="App-title">Última búsqueda</h3>
+            <ListOfGifs gifs={gifs} />
+          </div>
+          <div className="App-category">
+            <TrendingSearches />
+          </div>
         </div>
       </div>
     </>
-  );
+  )
 }
